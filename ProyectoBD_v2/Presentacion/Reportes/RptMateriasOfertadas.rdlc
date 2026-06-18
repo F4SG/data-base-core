@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <ReportParameters>
+    <ReportParameter Name="ParamCarrera">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <DefaultValue><Values><Value></Value></Values></DefaultValue>
+      <Prompt>Código de Carrera</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParamPlan">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <DefaultValue><Values><Value></Value></Values></DefaultValue>
+      <Prompt>Número de Plan</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParamGestion">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <DefaultValue><Values><Value></Value></Values></DefaultValue>
+      <Prompt>Gestión</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <DataSources>
+    <DataSource Name="dsMateriasOfertadas">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsMateriasOfertadas">
+      <Fields>
+        <Field Name="cod_carrera"><DataField>cod_carrera</DataField></Field>
+        <Field Name="carrera"><DataField>carrera</DataField></Field>
+        <Field Name="num_plan"><DataField>num_plan</DataField></Field>
+        <Field Name="plan"><DataField>plan</DataField></Field>
+        <Field Name="gestion"><DataField>gestion</DataField></Field>
+        <Field Name="sigla"><DataField>sigla</DataField></Field>
+        <Field Name="materia"><DataField>materia</DataField></Field>
+        <Field Name="semestre"><DataField>semestre</DataField></Field>
+        <Field Name="docente"><DataField>docente</DataField></Field>
+        <Field Name="aula"><DataField>aula</DataField></Field>
+      </Fields>
+      <Query>
+        <DataSourceName>dsMateriasOfertadas</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Titulo">
+            <CanGrow>true</CanGrow>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Materias Ofertadas — UniversidadXYZ</Value>
+                    <Style><FontSize>14pt</FontSize><FontWeight>Bold</FontWeight></Style>
+                  </TextRun>
+                </TextRuns>
+                <Style><TextAlign>Center</TextAlign></Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.1in</Top><Left>0in</Left><Height>0.4in</Height><Width>7.5in</Width>
+          </Textbox>
+          <Textbox Name="SubTitulo">
+            <CanGrow>true</CanGrow>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=("Carrera: " &amp; Parameters!ParamCarrera.Value &amp; "   Plan: " &amp; Parameters!ParamPlan.Value &amp; "   Gestión: " &amp; Parameters!ParamGestion.Value)</Value>
+                    <Style><FontSize>9pt</FontSize><Color>Gray</Color></Style>
+                  </TextRun>
+                </TextRuns>
+                <Style><TextAlign>Center</TextAlign></Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.55in</Top><Left>0in</Left><Height>0.25in</Height><Width>7.5in</Width>
+          </Textbox>
+          <Tablix Name="TblMaterias">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn><Width>0.7in</Width></TablixColumn>
+                <TablixColumn><Width>2in</Width></TablixColumn>
+                <TablixColumn><Width>0.55in</Width></TablixColumn>
+                <TablixColumn><Width>0.75in</Width></TablixColumn>
+                <TablixColumn><Width>1.5in</Width></TablixColumn>
+                <TablixColumn><Width>0.7in</Width></TablixColumn>
+                <TablixColumn><Width>1.3in</Width></TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="h1"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Sigla</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h2"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Materia</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h3"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Sem.</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h4"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Gestión</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h5"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Docente</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h6"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Aula</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="h7"><Paragraphs><Paragraph><TextRuns><TextRun><Value>Carrera</Value><Style><FontWeight>Bold</FontWeight><Color>White</Color><FontSize>9pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>SteelBlue</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.22in</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="d1"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!sigla.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d2"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!materia.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d3"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!semestre.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d4"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!gestion.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d5"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!docente.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d6"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!aula.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="d7"><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!carrera.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns></Paragraph></Paragraphs></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember><KeepWithGroup>After</KeepWithGroup></TablixMember>
+                <TablixMember><Group Name="Details" /></TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dsMateriasOfertadas</DataSetName>
+            <Top>0.9in</Top><Left>0in</Left><Height>0.47in</Height><Width>7.5in</Width>
+          </Tablix>
+        </ReportItems>
+        <Height>2in</Height>
+      </Body>
+      <Width>7.5in</Width>
+      <Page>
+        <PageHeight>11in</PageHeight>
+        <PageWidth>8.5in</PageWidth>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Language>es-BO</Language>
+</Report>
