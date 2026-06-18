@@ -9,14 +9,14 @@ namespace UniversidadXYZ.Presentacion
         [STAThread]
         static void Main()
         {
-            try
-            {
-                Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
-            }
-            catch
-            {
-                // ReportViewer puede funcionar sin tipos espaciales de SQL Server.
-            }
+            // try
+            // {
+            //     Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+            // }
+            // catch
+            // {
+            //     // ReportViewer puede funcionar sin tipos espaciales de SQL Server.
+            // }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
